@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+  <title>NODE TREE URBAN ARCHIVE ART PROJECT TEAM</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <script src = "https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+  <script src = "p5.gui.js"></script>
+
+  <style>
+main header a{
+}    
+main{
+  font-family: sans-serif;
+  display: flex;
+}
+header{
+  font-family: sans-serif;
+  border: 2px solid black;
+  background: tomato;
+  margin: 10px;
+  padding: 20px;
+}
+header nav{}
+header nav ul{
+  border: 2px solid black;
+  display: flex;
+}
+header nav ul li{
+  border: 2px solid black;
+  list-style: none;
+  margin: 10px;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color: red;
+}
+section{
+  width: 70%;
+  background: tomato;
+  border: 2px solid black;
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+section h1{
+  border: 2px solid black;
+}
+article h2{
+  border: 2px solid black;
+}
+article h2 p{
+  border: 2px solid black;
+}
+aside{
+  border: 2px solid black;
+  width: 30%;
+
+  background: tomato;
+  padding: 20px;
+  margin: 20px;
+  box-sizing: border-box;
+}
+aside img{
+  width: 100%;
+}
+aside p{
+  text-align: center;
+}
+footer address{
+  border: 2px solid black;
+  margin: 10px;
+  padding: 20px;
+  background: tomato;
+}
+footer address a{
+  border: 2px solid black;
+  display: block;
+}
+.p5s{
+  border: 2px solid black;
+  margin: 10px;
+}
+.p5_title{
+  text-align: center;
+}
+</style>
+<script class ="p5" type="text/javascript">
+
+  
+    let sketch = function(p){
+    class Ball{
+    constructor(x,y,radius){
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.vx = p.random(-1,1);
+    this.vy = p.random(-1,1);
+    }
+    update(){
+    this.x+=this.vx;
+    this.y+=this.vy;
+    if(this.x>=p.width||this.x<=0){
+      this.vx*=-1;
+    }
+    if(this.y>=p.height||this.y<=0){
+      this.vy*=-1;
+    }
+  }
+
+draw(){
+  fill(0);
+  ellipse(this.x,this.y,this.radius);
+
+  }
+}
+    let balls = [];
+    let lines = false;
+
+    let color;
+    let div;
+    let x,y;
+    let vx,vy;
+    p.setup = function(){
+      div = p.canvas.parentElement;
+      p.createCanvas(div.clientWidth,div.clientHeight);
+      vx = p.random(-1,1);
+      vy = p.random(-1,1);
+      x = p.width*0.5;
+      y = p.height*0.5;
+      color = 0;
+    }
+    p.draw = function(){
+      x+=vx;
+      y+=vy;
+      if(x>=p.width||x<=0){
+        vx*=-1;
+      }
+      if(y>=p.height||y<=0){
+        vy*=-1;
+      }
+      p.fill(0);
+      p.background(255);
+      p.ellipse(x,y,5,5);
+
+      
+    }
+  
+    p.keyPressed = function(){
+      if(p.key == '1'){
+        
+        let x = p.random(0,p.width);
+        let y = p.random(0,p.height);
+        let radius = p.random(2,5);
+        balls.push(new Ball(x,y,radius));
+       
+    }
+}
+}
+  new p5(sketch,'sketch1');
+  new p5(sketch,'sketch2');
+  new p5(sketch,'sketch3');
+  new p5(sketch,'sketch4');
+</script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href ="http://nodetree.kr" target="_blank">HOME</a></li>
+        <li><a href = "http://nodetree.kr" target = "_blank">ABOUT</a></li>
+        <li><a href = "http://nodetree.kr" target = "_blank">PORTFOLIO</a></li>
+        <li><a href = "http://nodetree.kr" target = "_blank">CV</a></li>
+        <li><a href = "http://nodetree.kr" target = "_blank">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+<main>
+  <section>
+    <h1>URBAN ART PROJECT TEAM</h1>
+      <article>
+        <h2>NODE</h2>
+        <div class = "p5s">
+          <div id="sketch2"></div>
+        </div>
+      </article>
+      <article>
+        <h2>TREE</h2>
+        <div class = "p5s">
+          <div id="sketch3"></div>
+        </div>
+      </article>
+      <article>
+        <h2>ART</h2>
+        <div class = "p5s">
+          <div id="sketch4"></div>
+        </div>
+      </article>
+
+      
+  </section>
+  <aside>
+        <div class = "p5_title">WEBGL</div>
+        <div class = "p5s">
+          <div id="sketch1"></div>
+        </div>
+  </aside>
+</main>  
+<footer>
+  <address>
+    <a href = "mailto:nodetreemedia@gmail.com">nodetreemedia@gmail.com</a><br>
+    <a href = "+tel:+821093156892">01093156892</a>
+  </address>
+</footer>
+</body>
+
+</html>
